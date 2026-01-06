@@ -143,27 +143,29 @@ const totalDairyValue = products
 console.log("Загальна вартість молочних продуктів:", totalDairyValue);
 
 console.log("--- ЗАВДАННЯ 3 ---");
-const sortedByQuantity = [...products].sort((a, b) => b.quantity - a.quantity);
-console.log("Топ товарів за кількістю:");
-console.table(
-  sortedByQuantity.map((p) => ({ name: p.name, quantity: p.quantity }))
-);
-console.log("Перший елемент оригіналу:", products[0].name);
+const sortedProducts = products.toSorted((a, b) => b.quantity - a.quantity);
+console.log(sortedProducts);
 
 console.log("--- ЗАВДАННЯ 4 ---");
 const sortedByPrice = [...products].sort((a, b) => a.price - b.price);
 const cheapestProduct = sortedByPrice[0];
 const mostExpensiveProduct = sortedByPrice[sortedByPrice.length - 1];
-console.log("Найдешевший:", cheapestProduct.name, cheapestProduct.price); 
+console.log("Найдешевший:", cheapestProduct.name, cheapestProduct.price);
 console.log(
   "Найдорожчий:",
   mostExpensiveProduct.name,
   mostExpensiveProduct.price
-); 
+);
 
 console.log("--- ЗАВДАННЯ 5 ---");
-const meatProducts = products.filter(p => p.category === "М'ясо та м'ясні вироби");
-const averagePrice = meatProducts.reduce((acc, p) => acc + p.price, 0) / meatProducts.length;
+const meatProducts = products.filter(
+  (p) => p.category === "М'ясо та м'ясні вироби"
+);
+const averagePrice =
+  meatProducts.reduce((acc, p) => acc + p.price, 0) / meatProducts.length;
 
-console.log("Список м'ясних продуктів:", meatProducts.map(p => p.name));
+console.log(
+  "Список м'ясних продуктів:",
+  meatProducts.map((p) => p.name)
+);
 console.log("Середня ціна:", averagePrice);
